@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    form{
+      margin-top: 50px;
+      font-size:20px
+    }
+  </style>
+{% endblock %}
+{% block content %}
+<h1>Edit Item </h1>
+<form action = "{{url_for('editItem',item_id = itemObj.id)}}" method='POST'>
+  Title <br>
+  <input type="text" name='name'  vale="{{itemObj.name}}" required>
+  <br>
+  Description <br>
+  <input type="text" name='desc' value="{{itemObj.details}}" required>
+  <br>
+  <input type="submit" name="Submit">
+
+{% endblock %}

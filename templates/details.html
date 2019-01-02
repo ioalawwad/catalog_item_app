@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    p{
+      font-size:20px
+    }
+  </style>
+{% endblock %}
+{% block content %}
+<h1> {{s_item.name}} </h1>
+  <p >{{s_item.details}}</p>
+
+  {%if 'username' in login_session%}
+  {%if login_session['email'] == s_item.user_id%}
+  <a href="{{url_for('editItem', item_id = s_item.id)}}">Edit</a> | <a href="{{url_for('deleteItem', item_id = s_item.id)}}">Delete</a>
+  {%endif%}
+  {%endif%}
+{% endblock %}

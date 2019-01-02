@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    form{
+      padding:15px;
+      margin-top: 25px;
+      font-size:20px
+    }
+  </style>
+{% endblock %}
+{% block content %}
+<h1>Add Item </h1>
+<form action = "{{url_for('addItem')}}"  method='POST'>
+  Title <br>
+  <input type="text" name='name' required>
+  <br>
+  Description <br>
+  <input type="text" name='desc' required>
+  <br>
+  <br>
+  <select name="categ_id" required>
+      {% for categ in categList %}
+      <option value={{categ.id}}>{{categ.name}}</option>
+      {% endfor %}
+  </select>
+  <br>
+  <br>
+  <input type="submit" name="Submit">
+  </form>
+
+{% endblock %}

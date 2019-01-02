@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+
+  </style>
+{% endblock %}
+{% block content %}
+
+  <section>
+    <nav>
+      <h1>Categories</h1>
+      <ul>
+        {%for cat in categs%}
+          <a class="itemOrCateg" href="{{url_for('showItems', categ_id=cat.id)}}">{{cat.name}}</a> <br>
+        {%endfor%}
+
+      </ul>
+    </nav>
+    <article>
+      {%if 'username' in login_session%}
+      <a id= "addItem" href="{{url_for('addItem')}}">Add Item</a>
+      {%endif%}
+
+      <h1>Latest Items</h1>
+      {%for singleElm in ItemList%}
+      <a class="itemOrCateg" href="/{{singleElm[0]}}">{{singleElm[1]}}</a>  
+        <span>({{singleElm[2]}})</span>
+      <br>
+      {%endfor%}
+    </article>
+  </section>
+
+{% endblock %}

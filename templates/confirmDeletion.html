@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    form{
+      margin-top: 50px;
+      font-size:20px
+    }
+  </style>
+{% endblock %}
+{% block content %}
+<form action = "{{url_for('deleteItem', item_id = item_id)}}" method='POST'>
+  <h1>Delete Item</h1>
+  <p> Are you sure you want to delete?
+  <br>
+  <input type="submit" name="Submit">
+
+{% endblock %}
